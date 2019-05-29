@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta
+      http-equiv="Content-Type"
+      content="text/html; charset=UTF-8"
+    />
+
+    <meta
+      http-equiv="X-UA-Compatible"
+      content="IE=edge"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1"
+    />
+
+    <title>
+      Technical Documentation Page
+    </title>
+    <link
+      rel="stylesheet"
+      href="style.css"
+    />
+    <!-- Bootstrap core CSS -->
+    <link
+      rel="stylesheet"
+      href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"
+    />
+  </head>
+
+  <body>
+      
+    <div
+      class="navbar navbar-inverse navbar-fixed-top"
+    >
+      <div class="navbar-header">
+        <button
+          type="button"
+          class="navbar-toggle"
+          data-toggle="collapse"
+          data-target=".navbar-collapse"
+        >
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#"
+          >Zen Protocol Technical
+          Documentation</a
+        >
+      </div>
+      <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li class="active">
+            <a
+              href="https://github.com/zenprotocol"
+              target="_blank"
+              >Github</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://www.zenprotocol.com/"
+              target="_blank"
+              >Website</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://t.me/zenprotocol/"
+              target="_blank"
+              >Telegram</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              >Created By @Chef </a
+            >
+          </li>
+        </ul>
+      </div>
+      <!--/.nav-collapse -->
+    </div>
+    <!--/.navbar -->
+    
+    <div
+      class="row-offcanvas row-offcanvas-left"
+    >
+      <div
+        id="sidebar"
+        class="sidebar-offcanvas"
+      >
+      
+        <div class="col-md-12">
+            <nav id="navbar">
+          <header>Zen Protocol Docs</header>
+          <ul
+            class="nav nav-pills nav-stacked"
+          >
+            <li class="active">
+              <a class="nav-link" href="#Zen_Wallet">Zen Wallet</a>
+            </li>
+            <li>
+              <a class="nav-link" href="#Zen_Full_Node">Zen Full Node</a>
+            </li>
+            <li>
+              <a class="nav-link" href="#Payment_Processing"
+                >Payment Processing</a
+              >
+            </li>
+            <li><a class="nav-link" href="#zen.js">zen.js</a></li>
+            <li>
+              <a class="nav-link" href="#Cold_Storage">Cold Storage</a>
+            </li>
+            <li><a class="nav-link" href="#Oracle">Oracle</a></li>
+            <li><a class="nav-link" href="#ZF*">ZF*</a></li>
+            <li><a class="nav-link" href="#SDK">SDK</a></li>
+            <li>
+              <a class="nav-link" href="#Transaction_Validation"
+                >Transaction Validation</a
+              >
+            </li>
+            <li>
+              <a class="nav-link" href="#Serialization">Serialization</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>    
+          <div id="scroll">
+                  
+        <div class="col-md-11 col-md-offset-1">
+          <p class="visible-xs">
+            <button
+              type="button"
+              class="btn btn-primary btn-sm"
+              data-toggle="offcanvas"
+            >
+              <i
+                class="glyphicon glyphicon-chevron-left"
+              >
+              </i>
+            </button>
+          </p>
+          <h2>
+              Zen Protocol Docs
+          </h2>
+          <h4>Documentation of the ZP desktop wallet, web wallet, api, sdk and cli.</h4>
+         
+        <main id="main-doc">
+          <div class="row">
+            <div class="col-md-11">
+              <section class="main-section" id="Zen_Wallet">
+                <header>Zen Wallet</header>
+                <article><p>There are currently 2 ways to access your Zen Wallet and make transactions:</p>
+               <ul><li> <h3><a href="https://docs.zenprotocol.com/zen-wallet/preparation" target="_blank" rel="noopener noreferrer"> Full Node Desktop Wallet</a></h3></li>
+              <p>This is the most secure way to validate the network, use your wallet to make transaction and run smart contracts. It takes more time to sync up with the network, but the result is a higher level of security.</p>
+                <li><h3><a href="https://docs.zenprotocol.com/zen-wallet/web-wallet" target="_blank" rel="noopener noreferrer"> Web Wallet (Beta)</a></h3></li>
+              <p>This option is easier to use and does not require time to sync up with the network, but is less secure and more vulnerable to attack.</p></ul></article>
+              </section>
+              <section class="main-section" id="Zen_Full_Node"><header>Zen Full Node</header>
+              <article><p>By running a full node you can validate the consensus rules of the Zen Protocol independently. There are two ways to run a full node:</p>
+              <ul><li><h3><a href="https://docs.zenprotocol.com/headless/headless" target="_blank" rel="noopener noreferrer">Via an NPM package</a></h3></li>
+              <li><h3><a href="https://docs.zenprotocol.com/headless/build-fromsource" target="_blank" rel="noopener noreferrer">Build from source</a></h3></li></ul>
+            </article></section>
+              <section class="main-section" id="Payment_Processing"><header>Payment Processing</header>
+              <article><p>Zen Protocol is a multi-token blockchain, any contract can issue any number of tokens. Each token (called an asset) is represented by the contract identifier and optional sub type (of 32 bytes).</p>
+                <p>Zen assets are represented by one byte of the value 0 (zero).</p>
+                  <p>Each asset also has a string representation, which is being used in the UI and API. Zen tokens are represented by the string 00 (zero zero).</p>
+                    <p>Unlike bitcoin, when sending an asset we have to specify which asset are we spending. Therefore the API always requires an additional asset parameter on the <code>wallet/send</code> and <code>wallet/execute</code> API calls.</p>
+              <ul>
+                <li><h3>Hot wallet payment processing</h3></li>
+                <p>The Zen-Node exposes an API for accepting payments.</p>
+                <p>For each payment we generate a new unique address and provide it to the end-user. Then periodically check the amount received for each address and save it. When the amount for address changed between calls you know the user made a payment. You can also specify the minimum confirmations required to consider a payment as complete.</p>
+                <p>All the assets belong to the wallet and can be spent by the <code>wallet/send</code>  API call.</p>
+                <p>You first have to create a wallet, either through the UI or via the <code>zen-cli</code>. The private key is encrypted, however it is still on the hot zen-node machine, therefore this solution should be treated as a hot wallet</p>
+                <li><h3>Cold wallet payment processing</h3></li>
+                <p>You can also use cold wallet for the payment processing.</p>
+                <p>You will have to use <a href="#zen.js">zen.js</a> library for the process.</p>
+                <p>Generate an extended private key on a secure computer and import the extended public key.
+                  </p></ul>
+                  <pre>
+    import {Mnemonic, ExtendedKey} from '@zen/zenjs'
+
+    const mnemonic = Mnemonic.generateMnemonic(24); // Generate once
+    console.log('mnemonic phrase', mnemonic);
+                      
+    const publicKey = ExtendedKey.fromMnemonic(mnemonic).neutered();
+                      
+    console.log('Extended Public Key', publicKey.toString());
+                     </pre>
+                     <p>On a hot machine generate a unique address by deriving the key with a unique index. Save the index to later sign the transaction on the secure computer.</p>
+                     <pre>
+    import {ExtendedKey} from '@zen/zenjs'
+    import {post} from 'axios'
+                        
+    const publicKey = ExtendedKey.fromString(encodedString);
+    const address = publicKey.derive(uniqueIndex).toAddress();
+                        
+    // import the address to zen node
+    post('http://127.0.0.1/:31567/wallet/importwatchonlyaddress',address,{ headers: { 'Content-Type': 'application/json' }});
+                        </pre>
+              <p>Share the address with the user and track the address for income payments the same as for the hot wallet, by calling <code>wallet/receivedbyaddress</code> </p>
+              <p>To make a payment you will to get the outputs from the zen-node and assemble the transaction on the secure computer. Retrieve the available outputs by calling <code>wallet/addressoutputs</code>  for each address.</p>
+              <p>Example of assembling and publishing  transaction:</p>
+    <pre>
+    import {TransactionBuilder,ExtendedKey} from '@zen/zenjs'
+    import {post} from 'axios'
+        
+    const tb = new TransactionBuilder('main');
+        
+    // Get the private key by matching the unique index for the input address
+    const privateKey = ExtendedKey.fromMnemonic(mnemonic).derive(inputAddressIndex).getPrivateKey();
+        
+    // An example input, use one you retrieved by calling `wallet/addressoutputs`
+    tb.addInput('0000000000000000000000000000000000000000000000000000000000000000',0, privateKey);
+        
+    // Address, amount and token (Zen)
+    tb.addOutput('tp1qfyplhxql09lvvg53dxg7t77tkkxhsp3l6q8xjjpj85hvqlw0ttqswjdapx', 100, '00');
+        
+    const tx = tb.sign();
+        
+    // You can take the hex to an hot computer
+    const hex = tx.toHex();
+        
+    // Transaction is ready to be published
+    post('http://127.0.0.1/:31567/blockchain/publishpublishtransaction',hex,{ headers: { 'Content-Type': 'application/json' }});
+    </pre>
+                    </article></section>
+              <section class="main-section" id="zen.js"><header>zen.js</header>
+              <article><p>Zen.JS is library for interacting with the Zen Protocol via JavaScript.</p></article> </section>
+              <section class="main-section" id="Cold_Storage"><header>Cold Storage</header></section>
+              <section class="main-section" id="Oracle"><header>Oracle</header></section>
+              <section class="main-section" id="ZF*"><header>ZF*</header></section>
+              <section class="main-section" id="SDK"><header>SDK</header></section>
+              <section class="main-section" id="Transaction_Validation"><header>Transaction Validation</header></section>
+              <section class="main-section" id="Serialization"><header>Serialization</header></section>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </main>
+    <!--/row-offcanvas -->
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+    <script
+  src="https://code.jquery.com/jquery-1.12.4.min.js"
+  integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+  crossorigin="anonymous"></script><script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        $('[data-toggle=offcanvas]').click(
+          function() {
+            $('.row-offcanvas').toggleClass(
+              'active'
+            );
+          }
+        );
+      });
+    </script>
+  </body>
+</html>

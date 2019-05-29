@@ -1,0 +1,72 @@
+
+      body,html,.row-offcanvas {
+        height:100%;
+        line-height: 1.5;
+        
+      }
+      
+      body {
+        padding-top: 50px;
+        margin-top: 10px !important;
+       
+       
+      }
+      
+     #scroll {
+        height:100% !important ;
+        overflow:auto !important ;
+        
+      } 
+      #sidebar {
+        width: inherit;
+        min-width: 220px;
+        max-width: 220px;
+        background-color:#f5f5f5;
+        float: left;
+        height:100% ;
+        position:relative;
+        overflow-y:auto;
+        overflow-x:hidden;
+      }
+      
+      header {
+        color: black;
+        font-size: 1.8em;
+        font-weight: thin;
+      }
+      section article {
+        color: #4d4e53;
+        font-size: 1.2em;
+       
+      }
+      
+      /*
+       * off Canvas sidebar
+       * --------------------------------------------------
+       */
+      @media screen and (max-width: 768px) {
+        .row-offcanvas {
+          position: relative;
+          -webkit-transition: all 0.25s ease-out;
+          -moz-transition: all 0.25s ease-out;
+          transition: all 0.25s ease-out;
+          width:calc(100% + 220px);
+          
+        }
+          
+        .row-offcanvas-left
+        {
+          left: -220px;
+        }
+      
+        .row-offcanvas-left.active {
+          left: 0;
+        }
+      
+        .sidebar-offcanvas {
+          position: absolute;
+          top: 0;
+        }
+      }
+      
+    
